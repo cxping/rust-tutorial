@@ -8,7 +8,17 @@ mod tests {
 }
 
 pub fn run(){
-    println!("Created=================")
+    println!("Created=================");
+    // t::s::f::tsf();
+    //CTFE
+    
 }
-
-
+// mod  t{
+//     pub(crate) mod  s{
+//         pub(crate) mod f{
+//          pub  fn tsf(){
+//                 println!("这是模块")
+//             }
+//         }
+//     }
+// }
