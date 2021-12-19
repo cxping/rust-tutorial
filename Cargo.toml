@@ -1,10 +1,11 @@
 [workspace]
 
 members = [
-    "major",
-    "created",
-    "closure",
-    "matching",
-    "strings", 
-    "databases",
+    "major",#主要运行空间 
+    "created",#created
+    "closure",#闭包
+    "matching", #匹配模式
+    "strings", #字符串
+    "databases",#数据库
+    "meshwork"
 ]
