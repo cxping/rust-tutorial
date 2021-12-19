@@ -4,5 +4,7 @@ members = [
     "major",
     "created",
     "closure",
-    "matching"
+    "matching",
+    "strings", 
+    "databases",
 ]
