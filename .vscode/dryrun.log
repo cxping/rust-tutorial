@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/chping/rust-workspace/rust-tutorial'
+cargo run -p major
+make: Leaving directory `/Users/chping/rust-workspace/rust-tutorial'
+ 

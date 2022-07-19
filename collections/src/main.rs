@@ -2,6 +2,10 @@ use std::collections::VecDeque;
 
 fn main() {
     println!("Hello, world!");
+    new_vec();
+    feach_vec();
+    insert_vec();
+    vec_qeque();
 }
 
 
@@ -9,6 +13,7 @@ fn new_vec() {
    //创建一个Vec集合
     let vec = Vec::<u8>::new();
     let vec2 = vec![1, 2, 3, 4, 5, 6];
+    println!("new_vec:{:?},{:?}",vec,vec2);
 }
 fn feach_vec() {
     let  mut vec = vec![1, 2, 3, 4, 5, 6];
@@ -64,7 +69,7 @@ fn insert_vec(){
     //方式一
     // let vec2 = vec![10,11,23,43,45];
     // vec.extend(vec2);
-    // println!("{:?}",vec);
+    println!("{:?}",vec);
 
 
     //方式二 将另一个数组，追加进来
