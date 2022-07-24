@@ -1,4 +1,4 @@
-use std::collections::VecDeque;
+use std::{collections::{VecDeque, hash_map, HashMap}, ffi::OsStr};
 
 
 pub fn new_vec() {
@@ -8,7 +8,7 @@ pub fn new_vec() {
      println!("new_vec:{:?},{:?}",vec,vec2);
  }
  pub  fn feach_vec() {
-     let  mut vec = vec![1, 2, 3, 4, 5, 6];
+     let  vec = vec![1, 2, 3, 4, 5, 6];
      //1:常规方式
      // for ele in vec {
      //     println!("{}",ele);
@@ -40,14 +40,37 @@ pub fn new_vec() {
      // for ele in vec.iter_mut() {
      //     *ele+=1;
      // }
- 
+
+     //数组转换为hashmap
+     let hash_map:HashMap<usize,&i32> = vec.iter().enumerate().collect();
+
+     
+     let vec2 = vec!["123","2","3","4","5","7"];
+    //  let  dee= vec2.iter().cloned().collect::<HashMap<i32,Box<str>>>();
+    //  the trait `FromIterator<&str>` is not implemented for `HashMap<i32, &str>`
+     let a = vec![1, 2];
+     let b = vec![String::from("hello"), String::from("world")];
+     let c: HashMap<i32, String> = a.into_iter().zip(b.into_iter()).collect();
+    //  let mut hash_map = HashMap::new().extend(b.into_iter());
+    let  ddd  = vec2.join("|").to_string();
+    println!("{}",ddd);
+
+     print_type_of(&c);
  
      //可以对数组进行翻转，然后进行迭代
      vec.iter().rev().for_each(|f|{
          println!("{}",f)
      });
+
+     
+
  }
  
+
+ fn print_type_of<T>(_: &T) {
+    println!("{}", std::any::type_name::<T>())
+}
+
  /// 对集合的修改操作
  pub  fn insert_vec(){
      let mut vec  = vec![2,3,4];

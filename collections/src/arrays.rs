@@ -25,8 +25,7 @@ pub fn create_array() {
     let slice:&[i32] = &arr[1..4];
     println!("{:?}",slice);
     assert_eq!(slice, &[2, 3, 4]);
-
-
+    
     let s = String::from("hello");
     let slice1 = &s[0..2];
     let slice2 = &s[..2];

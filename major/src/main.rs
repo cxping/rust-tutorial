@@ -1,5 +1,6 @@
+use core::time;
 use  std::thread;
-use std::time::Duration;
+use asyncs;
 
 fn main() {
     // let a = 10;
@@ -28,4 +29,9 @@ fn main() {
     //    thread::sleep( Duration::from_secs(1));
     // }
 
+    asyncs::future_study::futures_launch();
+    loop {
+        println!("main_launch======>");
+        thread::sleep(time::Duration::from_millis(1000))
+    }
 }

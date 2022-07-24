@@ -43,7 +43,7 @@ fn cls_fn()->impl Fn()->i32{
 fn c_mut()->impl for<'a> FnMut(&'a str)->String{
     //这里如果使用&str类型，因为咩有实现copy的trait，所以闭包内部是无法取得s的所有权，
     //这里是存方在堆里面的数据
-    // let   s = "hello".to_string();
+    // let  s = "hello".to_string();
     //离开函数后就失效了，
     move |i|{
          let mut  a = "hello world".to_string();

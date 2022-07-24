@@ -4,6 +4,7 @@ members = [
     "major",#主要运行空间 
     "created",#created
     "closure",#闭包
+    "asyncs",#异步
     "collections", #集合训练
     "matching", #匹配模式
     "strings", #字符串
