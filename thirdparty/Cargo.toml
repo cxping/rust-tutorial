@@ -1,10 +1,12 @@
 [package]
-name = "collections"
+name = "thirdparty"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+#序列化与反序列化
 serde = { version = "1.0", features = ["derive"] }
+#字符转换json
 serde_json = "1.0"

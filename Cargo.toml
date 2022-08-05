@@ -9,5 +9,6 @@ members = [
     "matching", #匹配模式
     "strings", #字符串
     "databases",#数据库
-    "meshwork" # Tcp链接
+    "meshwork", # Tcp链接
+    "thirdparty" #第三方库的使用
 ]
