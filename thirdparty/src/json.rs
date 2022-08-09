@@ -29,6 +29,17 @@ pub fn json_simple(){
     let persion = Persion::new(20,"雾里飞花",10,"群仙六星计",1333.0);
     println!("{:?}",persion);
     println!("{:?}",persion.to_json());
+}
 
 
+//字段自定义序列化名称
+//#[serde(rename = "name")]
+// #[serde(rename(serialize = "ser_name"))]
+// #[serde(rename(deserialize = "de_name"))]
+// #[serde(rename(serialize = "ser_name", deserialize = "de_name"))]
+#[derive(serde::Serialize,serde::Deserialize)]
+struct  Dog{
+   #[serde(rename="colour")]
+    color:String,
+    breed:String,
 }
