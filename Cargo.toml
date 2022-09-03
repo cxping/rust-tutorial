@@ -11,5 +11,7 @@ members = [
     "databases",#数据库
     "meshwork", # Tcp链接
     "thirdparty", #第三方库的使用
-    "thread"
+    "thread",
+    "tcp-client",
+    "tcp-srvc",
 ]
