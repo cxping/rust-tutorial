@@ -47,7 +47,7 @@ struct  Dog{
     breed:String,
     jump:bool,
     walk:bool,
-    //此处用于解决解析json过程中缺省的值，荣光default
+    //此处用于解决解析json过程中缺省的值，默认default
     #[serde(skip_serializing_if = "ignore_lc_equal_0", default = "default_lc")]
     lc: f64,
 }
