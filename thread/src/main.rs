@@ -1,4 +1,4 @@
-use std::{thread, sync::mpsc::{self, Sender, Receiver}};
+use std::{thread, sync::{mpsc::{self, Sender, Receiver}, Arc, Mutex}};
 
 fn main() {
     //标准库线程的简单实用
@@ -6,6 +6,8 @@ fn main() {
     simple_std_thread_builder();
     //多线程消息发送通道
     std_misc();
+    //重复执行任务
+    task_run();
 
 }
 fn simple_std_thread(){
@@ -64,4 +66,61 @@ fn std_misc(){
        // 显示消息被发送的次序
     println!("{:?}", ids);
   
+}
+
+
+
+
+
+// 一个任务执行demo
+fn task_run() {
+    let task_info = Arc::new(Mutex::new(TaskInfo{
+        timer:10,
+        task:fun1,
+        run_state:0
+    }));
+
+    let task_clone  = task_info.clone();
+    thread::spawn(move||{
+        loop {
+            let  mut task  = task_clone.lock().unwrap();
+            if task.run_state ==0{ //任务处于等待执行中
+                task.timer = task.timer-1;
+                if task.timer >0{
+                    task.run_state =1;
+                }
+            }
+            thread::sleep(std::time::Duration::from_millis(1))
+        }
+    });
+
+    let task_clone2  = task_info.clone();
+    loop {
+        let   mut task  = task_clone2.lock().unwrap();
+        if task.run_state ==1{
+            (task.task)();
+            task.run_state =0;
+            task.timer =10;
+        }
+        thread::sleep(std::time::Duration::from_micros(1))
+    }
+}
+
+#[derive(Debug,Clone)]
+struct  TaskInfo
+{
+    timer:i32,
+    task:fn(),
+    run_state:i32
+}
+
+
+pub fn fun1(){
+    println!("任务一");
+}
+pub fn fun2(){
+    println!("任务二");
+}
+pub fn fun3(){
+    println!("任务三");
 }
