@@ -49,16 +49,26 @@ struct G;
 // }
 
 macro_rules! exprs_to_hashmap {
-    ($(($y:expr,$value:expr)),+) => {
+    //这里可以之定义一些符号
+    // ($(($key:expr,$value:expr)),+)可以使用 ("key","value")
+    // ($($key:expr => $value:expr),+) => {可以使用 ("key","value")
+    ($(($key:expr,$value:expr)),+) => {
         {
             let mut map = HashMap::new();
             $(
-                map.insert(stringify!($y), stringify!($value));
+                map.insert(stringify!($key), stringify!($value));
             )+
             map
         }
     };
 }
+#[macro_export]
+macro_rules! five_times {
+    ($x:expr) => {
+        5 * $x
+    };
+}
+
 fn main() {
     fn_rules_println!();
     let hash_map: HashMap<_, _> = exprs_to_hashmap![
