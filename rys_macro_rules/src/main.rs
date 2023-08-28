@@ -49,11 +49,11 @@ struct G;
 // }
 
 macro_rules! exprs_to_hashmap {
-    ($($y:expr),+) => {
+    ($(($y:expr,$value:expr)),+) => {
         {
             let mut map = HashMap::new();
             $(
-                map.insert(stringify!($y), ());
+                map.insert(stringify!($y), stringify!($value));
             )+
             map
         }
@@ -61,8 +61,14 @@ macro_rules! exprs_to_hashmap {
 }
 fn main() {
     fn_rules_println!();
-    let hash_map: HashMap<_, _> = exprs_to_hashmap!["1", "3", "4", "5"];
-    println!("H{:?}", hash_map);
+    let hash_map: HashMap<_, _> = exprs_to_hashmap![
+        ("key1", "value1"),
+        ("key2", "value2"),
+        ("key3", "value3") // "key1" => "value1",
+                           // "key2" => "value2",
+                           // "key3" => "value3"
+    ];
+    println!("{:?}", hash_map);
     test!(1i32 + 1 == 2i32; and 2i32 * 2 == 4i32);
     fn_rules_p();
 }
